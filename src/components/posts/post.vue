@@ -1,5 +1,5 @@
 <template>
-  <p>Este es un post :)</p>
+  <p>Este es un post</p>
 </template>
 
 <script>
