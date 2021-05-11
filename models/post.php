@@ -3,7 +3,7 @@
 require_once 'helpers/Model.php';
 
 class post extends Model {
-    protected static $table = 'posts';
+    protected static string $table = 'posts';
 
     protected static function getTable()
     {
