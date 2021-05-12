@@ -12,10 +12,11 @@ export default {
     post
   },
   created(){
-    axios.get(process.env.VUE_APP_API_URL.concat('/posts/index'))
+    console.log('hola desde posts')
+    /*axios.get()
       .then(result => {
         console.log(result.data)
-      })
+      })*/
   }
 }
 </script>
