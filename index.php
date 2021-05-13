@@ -1,4 +1,5 @@
 <?php
+require_once 'config/cors.php';
 session_start();
 require_once 'config/parameters.php';
 require_once 'autoload.php';
