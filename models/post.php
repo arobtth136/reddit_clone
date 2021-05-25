@@ -3,10 +3,14 @@
 require_once 'helpers/Model.php';
 
 class post extends Model {
-    protected static $table = 'posts';
 
     protected static function getTable()
     {
-        return static::$table;
+        return 'posts';
+    }
+
+    protected static function fields(): array
+    {
+        return ['id','fechaPost','imagenes','texto','usuario','comunidad','likes'];
     }
 }
