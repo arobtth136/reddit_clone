@@ -1,5 +1,3 @@
-create database reddit_clone;
-
 use reddit_clone;
 
 create table usuarios(
@@ -14,18 +12,19 @@ create table usuarios(
 
 create table comunidades(
     id int not null  unique auto_increment,
+    nombre varchar(255) unique,
     fotoGrupo varchar(128),
     PRIMARY KEY (id)
 );
 
 create table posts(
     id int not null unique auto_increment,
-    fechaPost date,
+    fechaPost date not null,
     imagenes json,
-    texto text,
+    texto text not null,
     usuario int not null,
     comunidad int not null,
-    likes int not  null,
+    likes int not null default 0,
     PRIMARY KEY (id),
     FOREIGN KEY (usuario) references usuarios(id),
     FOREIGN KEY (comunidad) REFERENCES comunidades(id)

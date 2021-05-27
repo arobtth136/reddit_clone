@@ -1,8 +1,8 @@
 <?php
-class dbConnect {
-    public function connect()
+
+class connection {
+    public static function connect()
     {
-        $connection = mysqli_connect('localhost', 'root', '', 'reddit_clone');
-        return $connection;
+        return mysqli_connect('localhost', 'root', 'root', 'reddit_clone','8889');
     }
 }
