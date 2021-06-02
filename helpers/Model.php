@@ -50,6 +50,31 @@ abstract class Model extends connection {
         }
     }
 
+    public function update(array $array){
+        if (empty($this->query)){
+            $this->query .= "update {$this->table} set";
+                $i = 0;
+                foreach ($array as $variable => $valor){
+                    if ($i == 0){
+                        $this->query .= " {$variable} = {$valor}";
+                    } elseif($i >= 1) {
+                        $this->query .= " ,{$variable} = {$valor}";
+                    }
+                    $i++;
+                }
+            return $this;
+        }
+    }
+
+    public function delete(){
+        if (empty($this->query)){
+            $this->query .= "update {$this->table} set deleted_at = current_timestamp()";
+            return $this;
+        }
+    }
+
+
+
     public static function select(){
         $connection = connection::connect();
     }
@@ -57,4 +82,6 @@ abstract class Model extends connection {
     protected abstract static function getTable();
 
     protected abstract static function fields();
+
+
 }
