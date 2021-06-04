@@ -14,6 +14,21 @@ abstract class Model extends connection {
         $this->table = static::getTable();
     }
 
+    public function create(array $data){
+        if(is_array($data)){
+            $keys = array_keys($data);
+            $params = ""; $values = "";
+            foreach($keys as $key){
+                $params .= "$key,";
+                $values .= "$data[$key],";
+            }
+            $this->query = "insert into {$this->table} ($params) values ($values)";
+            if($this->connection->query($this->query)){
+
+            }
+        }
+    }
+
     public function all(){
         if($query = $this->connection->query("select * from {$this->table}")){
             $data = [];

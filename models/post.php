@@ -4,6 +4,8 @@ require_once 'helpers/Model.php';
 
 class post extends Model {
 
+    protected $id,$usuario;
+
     protected static function getTable()
     {
         return 'posts';
