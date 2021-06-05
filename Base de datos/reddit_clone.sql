@@ -7,6 +7,7 @@ create table usuarios(
     fechaNacimiento date not null ,
     fotoPerfil varchar(128),
     correo varchar(255),
+    deleted_at timestamp,
     PRIMARY KEY (id)
 );
 
@@ -14,6 +15,7 @@ create table comunidades(
     id int not null  unique auto_increment,
     nombre varchar(255) unique,
     fotoGrupo varchar(128),
+    deleted_at timestamp,
     PRIMARY KEY (id)
 );
 
@@ -25,6 +27,7 @@ create table posts(
     usuario int not null,
     comunidad int not null,
     likes int not null default 0,
+    deleted_at timestamp,
     PRIMARY KEY (id),
     FOREIGN KEY (usuario) references usuarios(id),
     FOREIGN KEY (comunidad) REFERENCES comunidades(id)
@@ -38,6 +41,7 @@ create table comentarios(
     comunidad int not null,
     likes int not null,
     respuesta int null,
+    deleted_at timestamp,
     PRIMARY KEY (id),
     FOREIGN KEY (usuario) references usuarios(id),
     FOREIGN KEY (comunidad) REFERENCES comunidades(id)
@@ -46,6 +50,7 @@ create table comentarios(
 create table usuariosEnComunidad(
     usuario int not null,
     comunidad int not null,
+    deleted_at timestamp,
     FOREIGN KEY (usuario) references usuarios(id),
     FOREIGN KEY (comunidad) references comunidades(id)
 );
