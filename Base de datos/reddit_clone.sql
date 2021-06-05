@@ -1,3 +1,5 @@
+drop database if exists reddit_clone;
+create database if not exists reddit_clone;
 use reddit_clone;
 
 create table usuarios(
@@ -7,15 +9,16 @@ create table usuarios(
     fechaNacimiento date not null ,
     fotoPerfil varchar(128),
     correo varchar(255),
-    deleted_at timestamp,
+    deleted_at timestamp null,
     PRIMARY KEY (id)
 );
 
 create table comunidades(
     id int not null  unique auto_increment,
     nombre varchar(255) unique,
-    fotoGrupo varchar(128),
-    deleted_at timestamp,
+    icono varchar(255),
+    fotoGrupo varchar(255),
+    deleted_at timestamp null,
     PRIMARY KEY (id)
 );
 
@@ -27,7 +30,7 @@ create table posts(
     usuario int not null,
     comunidad int not null,
     likes int not null default 0,
-    deleted_at timestamp,
+    deleted_at timestamp null,
     PRIMARY KEY (id),
     FOREIGN KEY (usuario) references usuarios(id),
     FOREIGN KEY (comunidad) REFERENCES comunidades(id)
@@ -41,7 +44,7 @@ create table comentarios(
     comunidad int not null,
     likes int not null,
     respuesta int null,
-    deleted_at timestamp,
+    deleted_at timestamp null,
     PRIMARY KEY (id),
     FOREIGN KEY (usuario) references usuarios(id),
     FOREIGN KEY (comunidad) REFERENCES comunidades(id)
@@ -50,7 +53,7 @@ create table comentarios(
 create table usuariosEnComunidad(
     usuario int not null,
     comunidad int not null,
-    deleted_at timestamp,
+    deleted_at timestamp null,
     FOREIGN KEY (usuario) references usuarios(id),
     FOREIGN KEY (comunidad) references comunidades(id)
 );

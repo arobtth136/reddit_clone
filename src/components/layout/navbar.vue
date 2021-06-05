@@ -12,6 +12,14 @@
           src="https://logos-marcas.com/wp-content/uploads/2020/11/Reddit-Logo.png"
           transition="scale-transition"
           width="100"/>
+      <v-menu :close-on-content-click="false">
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn text color="black" class="ma-2" v-bind="attrs" v-on="on">
+            <span class="mr-2"><v-icon>mdi-home</v-icon> Principal</span>
+          </v-btn>
+        </template>
+        <communities_menu/>
+      </v-menu>
     </div>
     <v-spacer></v-spacer>
     <div v-if="!get_user">
@@ -42,13 +50,15 @@
 <script>
 import {mapGetters} from "vuex/dist/vuex.mjs"
 import login from "../user/login"
+import communities_menu from "../comunidades/communities_menu"
 export default {
   name: "navbar",
   computed: {
     ...mapGetters('user', ['get_user'])
   },
   components: {
-    login: login
+    login: login,
+    communities_menu: communities_menu
   }
 }
 </script>

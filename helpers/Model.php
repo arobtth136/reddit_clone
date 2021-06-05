@@ -32,8 +32,7 @@ abstract class Model extends connection {
     public function all(){
         if($query = $this->connection->query("select * from {$this->table}")){
             $data = [];
-            while($row = $query->fetch_array()){
-                var_dump($row);
+            while($row = $query->fetch_assoc()){
                 $data[] = $row;
             }
             return $data;
