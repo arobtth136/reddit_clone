@@ -26,6 +26,7 @@ create table posts(
     id int not null unique auto_increment,
     fechaPost date not null,
     imagenes json,
+    titulo varchar(255) not null,
     texto text not null,
     usuario int not null,
     comunidad int not null,
@@ -34,6 +35,20 @@ create table posts(
     PRIMARY KEY (id),
     FOREIGN KEY (usuario) references usuarios(id),
     FOREIGN KEY (comunidad) REFERENCES comunidades(id)
+);
+
+create table user_like_post(
+    post_id int not null,
+    user_id int not null,
+    FOREIGN KEY (post_id) references posts(id),
+    FOREIGN KEY (user_id) references usuarios(id)
+);
+
+create table user_dislike_post(
+    post_id int not null,
+    user_id int not null,
+    FOREIGN KEY (post_id) references posts(id),
+    FOREIGN KEY (user_id) references usuarios(id)
 );
 
 create table comentarios(
