@@ -1,14 +1,14 @@
 <template>
-  <posts/>
+  <v-container fluid>
+    <router-view></router-view>
+  </v-container>
 </template>
 
 <script>
-  import Posts from "../components/posts/posts";
-
-  export default {
-    name: 'Home',
-    components: {
-      Posts
-    },
+export default {
+  name: 'Home',
+  created() {
+    this.$router.push('posts')
   }
+}
 </script>

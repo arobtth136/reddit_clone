@@ -1,17 +1,7 @@
 <template>
-  <v-app-bar
-      app
-      color="white"
-      dark
-  >
+  <v-app-bar app color="white" dark>
     <div class="d-flex align-center">
-      <v-img
-          alt="Reddit clone logo"
-          class="shrink mr-2"
-          contain
-          src="https://logos-marcas.com/wp-content/uploads/2020/11/Reddit-Logo.png"
-          transition="scale-transition"
-          width="100"/>
+      <v-img alt="Reddit clone logo" class="shrink mr-2" contain src="images/Reddit-logo.png" transition="scale-transition" width="100"/>
       <v-menu :close-on-content-click="false">
         <template v-slot:activator="{ on, attrs }">
           <v-btn text color="black" class="ma-2" v-bind="attrs" v-on="on">

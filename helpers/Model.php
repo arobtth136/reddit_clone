@@ -54,8 +54,9 @@ abstract class Model extends connection {
             if($result = $this->connection->query($this->query)){
                 $data = [];
                 while($row = $result->fetch_array()){
-                    var_dump($row);
+                    $data[] = $row;
                 }
+                return json_encode($data);
             } else {
                 return 'error';
             }
