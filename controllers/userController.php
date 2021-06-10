@@ -8,5 +8,6 @@ class userController
             $user = new user();
             echo $user->login($_POST['usuario'],$_POST['password']);
         }
+
     }
 }

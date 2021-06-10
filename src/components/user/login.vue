@@ -10,6 +10,9 @@
           <v-col cols="12">
             <v-text-field v-model="user.password" label="Password" type="password" required></v-text-field>
           </v-col>
+          <v-col>
+            <v-checkbox label="Recordar usuario" v-model="checked"></v-checkbox>
+          </v-col>
         </v-row>
       </v-container>
     </v-form>
@@ -35,6 +38,7 @@ export default {
       const data = new FormData()
       data.append('usuario', this.user.username)
       data.append('password', this.user.password)
+      data.append('remember_me', this.checked)
       axios.post(process.env.VUE_APP_API_URL.concat('/user/login'),data,{headers: {'Content-Type': 'text/plain'}})
       .then(response => {
         if(response.data.code === 200){

@@ -10,6 +10,7 @@ create table usuarios(
     fotoPerfil varchar(128),
     correo varchar(255),
     deleted_at timestamp null,
+    remember_token varchar(255),
     PRIMARY KEY (id)
 );
 
