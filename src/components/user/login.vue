@@ -31,7 +31,8 @@ export default {
   name: "login",
   data: () => ({
     valid: false,
-    user: {username: '', password: ''}
+    user: {username: '', password: ''},
+    checked: false
   }),
   methods: {
     login(){
