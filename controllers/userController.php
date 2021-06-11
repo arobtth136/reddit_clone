@@ -6,7 +6,8 @@ class userController
     public function login(){
         if(isset($_POST)){
             $user = new user();
-            echo $user->login($_POST['usuario'],$_POST['password']);
+            echo $user->login($_POST['usuario'],$_POST['password'],boolval($_POST['remember_me']));
         }
+
     }
 }

@@ -10,10 +10,17 @@ class user
         $this->connection = connection::connect();
     }
 
-    public function login($username, $password){
+    public function login($username, $password, $remember_me){
         $login = $this->connection->query("select * from usuarios where nombreUsuario = '{$this->connection->real_escape_string($username)}'");
         if($row = $login->fetch_assoc()){
             if(password_verify($password, $row['password'])){
+                if($remember_me){
+                    $query = $this->connection->prepare('update usuarios set remember_token = ? where id = ?');
+                    $token = md5(microtime());
+                    $query->bind_param('si', $token,$row['id']);
+                    $query->execute();
+                    $row['remember_token'] = $token;
+                }
                 $_SESSION['user'] = $row;
                 return json_encode(array('code' => 200, 'message' => $row));
             } else {
