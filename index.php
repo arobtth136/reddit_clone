@@ -5,7 +5,9 @@ require_once 'config/parameters.php';
 require_once 'autoload.php';
 require_once 'config/connection.php';
 require_once 'config/cors.php';
-if(isset($_GET['controller'])){
+if(!isset($_GET['controller'])){
+    require_once 'src/views/Home.php';
+} else {
     $controllerName = $_GET['controller'] . 'Controller';
     if (class_exists($controllerName)) {
         $controller = new $controllerName();
@@ -21,6 +23,5 @@ if(isset($_GET['controller'])){
     } else {
         echo "Class doesn't exists {$controllerName}";
     }
-} else {
-    require_once 'src/views/Home.php';
 }
+
